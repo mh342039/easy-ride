@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { mainModule } from 'process';
 import { HomepageComponent } from './component/homepage/homepage.component';
 import { MainComponent } from './component/main/main.component';
 import { MyRidesComponent } from './component/my-rides/my-rides.component';
@@ -12,7 +11,7 @@ import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { UpdatePasswordComponent } from './component/update-password/update-password.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'signin', pathMatch: 'full' },
+  { path: '', redirectTo: 'main', pathMatch: 'full' },
   { path: 'signin', component: SignInComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'updatePassword', component: UpdatePasswordComponent },
