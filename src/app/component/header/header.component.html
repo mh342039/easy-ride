@@ -1,1 +1,36 @@
-<p>header works!</p>
+<header class="header">
+    <div class="row no-margin">
+        <div class="col-md-3">
+            Logo
+        </div>
+        <div class="col-md-7 right-align">
+            <a class="link" routerLink="/main/publish-ride">
+                <span class="glyphicon glyphicon-plus publish-icon"></span>
+                <span>Publish a ride</span>
+                </a>
+            <a class="link" (click)="logIn()">
+                <span class="glyphicon glyphicon-log-in no-border-icon"></span>
+            <span>Log In</span>
+
+            </a>
+            <a class="link" (click)="signUp()">
+                <span class="glyphicon glyphicon-edit no-border-icon"></span>
+                <span>Sign Up</span>
+            </a>
+        </div>
+        <div class="col-md-2" *ngIf="_dataService.userSession">
+            <a class="dropdown link">
+                <span class="glyphicon glyphicon-user icon user-icon dropdown-toggle" data-toggle="dropdown"></span>
+
+                <ul class="dropdown-menu menu-position">
+                  <li class="profile-menu" routerLink="/main/profile"><a class="link menu-link">
+                    <span class="glyphicon glyphicon-user no-border-icon"></span>
+                    Profile</a></li>
+                  <li class="profile-menu" (click)="logout()"><a class="link menu-link">
+                    <span class="glyphicon glyphicon-log-out no-border-icon"></span>
+                    Log out</a></li>
+                </ul>
+            </a>
+        </div>
+    </div>
+</header>

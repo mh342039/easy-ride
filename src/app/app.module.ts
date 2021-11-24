@@ -16,7 +16,10 @@ import { SearchResultComponent } from './component/search-result/search-result.c
 import { RideDetailsComponent } from './component/ride-details/ride-details.component';
 import { PublishRideComponent } from './component/publish-ride/publish-ride.component';
 import { MyRidesComponent } from './component/my-rides/my-rides.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+//Modules
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +39,9 @@ import { MyRidesComponent } from './component/my-rides/my-rides.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
