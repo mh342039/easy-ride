@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomepageComponent } from './component/homepage/homepage.component';
 import { MainComponent } from './component/main/main.component';
 import { MyRidesComponent } from './component/my-rides/my-rides.component';
+import { ProfileComponent } from './component/profile/profile.component';
 import { PublishRideComponent } from './component/publish-ride/publish-ride.component';
 import { RideDetailsComponent } from './component/ride-details/ride-details.component';
 import { SearchResultComponent } from './component/search-result/search-result.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
       { path: 'ride-details', component: RideDetailsComponent },
       { path: 'my-rides', component: MyRidesComponent },
       { path: 'publish-ride', component: PublishRideComponent },
+      { path: 'profile', component: ProfileComponent },
     ]
   }
 ];
