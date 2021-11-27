@@ -12,7 +12,7 @@ import { SignUpComponent } from '../sign-up/sign-up.component';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, private router: Router, private _dataService: DataService) { }
+  constructor(public dialog: MatDialog, private router: Router, public _dataService: DataService) { }
 
   ngOnInit(): void {
   }
