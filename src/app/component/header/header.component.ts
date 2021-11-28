@@ -18,7 +18,9 @@ export class HeaderComponent implements OnInit {
   }
 
   logIn(){
-    const dialogRef = this.dialog.open(SignInComponent);
+    const dialogRef = this.dialog.open(SignInComponent,{
+      width: '500px',
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       this._dataService.createUserSession(result)
@@ -26,7 +28,9 @@ export class HeaderComponent implements OnInit {
   }
 
   signUp(){
-    const dialogRef = this.dialog.open(SignUpComponent);
+    const dialogRef = this.dialog.open(SignUpComponent,{
+      width: '500px',
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       
