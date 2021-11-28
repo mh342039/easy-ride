@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class HttpService {
   localURL = "http://localhost:3000/api";
-  ProdURL = "https://g12-csci5709-backend.herokuapp.com/api"
+  ProdURL = "http://bypass.grantchesney.com:8000/api"
   URL:string
   constructor(private http: HttpClient) {
     this.URL = this.ProdURL

@@ -12,13 +12,15 @@ import { SignUpComponent } from '../sign-up/sign-up.component';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, private router: Router, private _dataService: DataService) { }
+  constructor(public dialog: MatDialog, private router: Router, public _dataService: DataService) { }
 
   ngOnInit(): void {
   }
 
   logIn(){
-    const dialogRef = this.dialog.open(SignInComponent);
+    const dialogRef = this.dialog.open(SignInComponent,{
+      width: '500px',
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       this._dataService.createUserSession(result)
@@ -26,7 +28,9 @@ export class HeaderComponent implements OnInit {
   }
 
   signUp(){
-    const dialogRef = this.dialog.open(SignUpComponent);
+    const dialogRef = this.dialog.open(SignUpComponent,{
+      width: '500px',
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       
