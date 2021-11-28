@@ -22,4 +22,8 @@ export class DataService {
     localStorage.setItem('user-session', obj)
     this.userSession = obj
   }
+
+  getAccessToken(){
+    return this.userSession.access_token
+  }
 }
