@@ -1,0 +1,16 @@
+mat-form-field{
+    display: block;
+}
+
+button{
+    margin: 0 15px;
+}
+
+form{
+    width: 70vw;
+    margin: auto;
+}
+
+h1{
+    margin-left: 100px;
+}

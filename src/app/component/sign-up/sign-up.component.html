@@ -34,7 +34,7 @@
         <mat-form-field>
             <mat-label>Phone</mat-label>
             <input matInput formControlName="Phone" placeholder="Phone" type="text">
-        <mat-error *ngIf="ProfileFormGroup?.controls['Phone']?.errors?.minlength || ProfileFormGroup?.controls['Password']?.errors?.maxlength">Phone Number
+        <mat-error *ngIf="ProfileFormGroup?.controls['Phone']?.errors?.minlength || ProfileFormGroup?.controls['Phone']?.errors?.maxlength">Phone Number
             must have 10 digits</mat-error>
         <mat-error *ngIf="ProfileFormGroup?.controls['Phone']?.errors?.pattern">Please Enter valid
                 Phone Number

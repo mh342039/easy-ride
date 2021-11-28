@@ -1,1 +1,59 @@
-<p>publish-ride works!</p>
+<h1>Publish Ride</h1>
+
+<form [formGroup]="RideFormGroup" (submit)="publish()">
+    <mat-form-field style="margin-right: 15px;">
+        <mat-label>Ride Title*</mat-label>
+        <input matInput formControlName="RideTitle" placeholder="Ride Title" type="text">
+        {{RideFormGroup.RideTitle}}
+        <mat-error *ngIf="RideFormGroup?.controls['RideTitle'].errors?.required">Ride Title is
+            required </mat-error>
+        <mat-error *ngIf="RideFormGroup?.controls['RideTitle'].errors?.pattern">Ride Title should
+            be Alpha-numeric </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <mat-label>Leaving From*</mat-label>
+        <input matInput formControlName="Origin" placeholder="Leaving From" type="text">
+        <mat-error *ngIf="RideFormGroup?.controls['Origin']?.errors?.required">Leaving From is
+            required</mat-error>
+        <mat-error *ngIf="RideFormGroup?.controls['Origin']?.errors?.pattern">Leaving From should be
+            Alpha-numeric</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Destination*</mat-label>
+        <input matInput formControlName="Destination" placeholder="Destination" type="text">
+        <mat-error *ngIf="RideFormGroup?.controls['Destination']?.errors?.required">Destination is required
+        </mat-error>
+        <mat-error *ngIf="RideFormGroup?.controls['Destination']?.errors?.pattern">Please Enter valid
+            Destination
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Time</mat-label>
+        <input matInput formControlName="Time" placeholder="Time" type="datetime-local" [min]="minDate">
+    <mat-error *ngIf="RideFormGroup?.controls['Time']?.errors?.minlength">Time Number
+        must have 10 digits</mat-error>
+    <mat-error *ngIf="RideFormGroup?.controls['Time']?.errors?.pattern">Please Enter valid
+            Time Number
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field style="margin-right: 15px;">
+        <mat-label>Price*</mat-label>
+        <input matInput formControlName="Price" type="number" placeholder="Price">
+        <mat-error *ngIf="RideFormGroup?.controls['Price']?.errors?.required">Price is required
+        </mat-error>
+        <mat-error *ngIf="RideFormGroup?.controls['Price']?.errors?.minlength">Price must be
+            atleast 8 charaters</mat-error>
+    </mat-form-field>
+
+
+    <br>
+
+    <button mat-raised-button color="primary" type="submit">Publish</button>
+    <button mat-raised-button color="warn" >Reset</button>
+
+</form>
