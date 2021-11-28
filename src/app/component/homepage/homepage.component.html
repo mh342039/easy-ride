@@ -1,1 +1,99 @@
 <p>homepage works!</p>
+<html>
+<head> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<body>
+<div class="hero-body" ng-app="">
+      <nav class="nav">
+          <div class="nav-menu">
+            <img 
+            max-width="100px"
+            height="100px"
+            src="assets/img/car.jpeg"/>  
+           
+            <a class="link"> <span style="color: black">EASY RIDE</span> </a> 
+    </div>
+    
+        <a class="link">
+            <span style="color: black">Publish a ride</span>
+        </a>
+
+        <a class="link"> <i class="fa fa-user fa-lg"> </i></a> 
+    </nav>
+    
+    <img
+    width=100%
+    height=460px;
+    src="assets/img/carpool.jpeg"/> 
+
+    <div class="search">
+        <input type="text" id="from" placeholder="From"
+        required
+        [(ngModel)]="model.from" name="from"> 
+        
+        <input type="text" id="to" placeholder="To"
+       required
+       [(ngModel)]="model.to" name="to">
+
+       <input type="text" id="passenger" placeholder="Passengers"
+       required
+       [(ngModel)]="model.passenger" name="passenger" >
+
+       <button type="btn btn-primary"> Submit </button>
+    </div>
+
+    <div class="container"> 
+        <div>
+            <span> Low cost </span>
+            <p class="words"> Find the right journey from our large choice of destinations and routes at reasonable costs</p>
+        </div>
+        <div>
+            <span> Know your mates </span>
+            <p class="words"> We take time to know your travel mate. We check their profiles and IDs, so you know whom you're riding with and can book at ease on our safe platform</p>
+        </div>
+        <div>
+            <span> Book at ease </span> 
+            <p class="words"> It's never been easier to book a ride! You may book a ride near you in minutes with our easy app, which is powered by cutting-edge technology.</p>
+        </div>
+    </div>
+
+    <div class="footer-container">
+        <div class="footer-link-container">
+            <div class="footer-link-wrap">
+                <a class="footer-link" href="#"> Terms &amp; Conditions</a>
+            </div>
+            <div class="footer-link-wrap">
+                <a class="footer-link" href="#"> FAQs</a>
+            </div>
+            <div class="footer-link-wrap">
+                <a class="footer-link" href="#"> Contact Us</a>
+            </div>
+        </div>
+        <div class="rights-container">
+            <span style="font-size: 18px;"> Easy Ride &#169; 2021. All rights reserved.</span>
+        </div>
+        
+
+        <div class="social-media-container">
+            <div class="social-media-wrap">
+               
+                <a class="social-media-link" href="#">  <i class="fa fa-instagram fa-3x" arial-hidden="true"></i> </a>
+            </div>
+            <div class="social-media-wrap">
+            
+                <a class="social-media-link" href="#"> <i class="fa fa-facebook fa-3x" arial-hidden="true"></i> </a>
+            </div>
+            <div class="social-media-wrap">
+                <a class="social-media-link" href="#"> <i class="fa fa-youtube fa-3x" arial-hidden="true"></i> </a>
+            </div>
+            <div class="social-media-wrap">
+                
+                <a class="social-media-link" href="#"> <i class="fa fa-twitter fa-3x" arial-hidden="true"></i> </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
