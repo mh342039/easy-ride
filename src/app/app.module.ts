@@ -29,6 +29,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
+import { RideSearchComponent } from './component/ride-search/ride-search.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { HttpClientModule } from '@angular/common/http';
     SearchResultComponent,
     RideDetailsComponent,
     PublishRideComponent,
-    MyRidesComponent
+    MyRidesComponent,
+    RideSearchComponent
   ],
   imports: [
     BrowserModule,

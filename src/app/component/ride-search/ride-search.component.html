@@ -1,0 +1,27 @@
+<div class="search-ride-container">
+
+<form [formGroup]="SearchFormGroup" (submit)="search()">
+    <mat-form-field >
+        <mat-label>Leave From*</mat-label>
+        <input matInput formControlName="LeaveFrom" placeholder="Leave From" type="text">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Going to*</mat-label>
+        <input matInput formControlName="GoingTo" placeholder="Going to" type="text">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Date*</mat-label>
+        <input matInput formControlName="Date" placeholder="Date" type="datetime-local">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Passanger</mat-label>
+        <input matInput formControlName="Passanger" placeholder="Passanger" type="number">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Search</button>
+
+</form>
+</div>
