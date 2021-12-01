@@ -1,1 +1,51 @@
-<p>profile works!</p>
+<h1 mat-dialog-title>Sign Up</h1>
+<div mat-dialog-content>
+    <form [formGroup]="ProfileFormGroup" (submit)="updateProfile()">
+        <mat-form-field style="margin-right: 15px;">
+            <mat-label>First Name*</mat-label>
+            <input matInput formControlName="FirstName" placeholder="First Name" type="text">
+            {{ProfileFormGroup.FirstName}}
+            <mat-error *ngIf="ProfileFormGroup?.controls['FirstName'].errors?.required">First Name is
+                required </mat-error>
+            <mat-error *ngIf="ProfileFormGroup?.controls['FirstName'].errors?.pattern">First Name should
+                be Alpha-numeric </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <mat-label>Last Name*</mat-label>
+            <input matInput formControlName="LastName" placeholder="Last Name" type="text">
+            <mat-error *ngIf="ProfileFormGroup?.controls['LastName']?.errors?.required">Last Name is
+                required</mat-error>
+            <mat-error *ngIf="ProfileFormGroup?.controls['LastName']?.errors?.pattern">Last Name should be
+                Alpha-numeric</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Email Address*</mat-label>
+            <input matInput formControlName="Email" placeholder="Email" type="email">
+            <mat-error *ngIf="ProfileFormGroup?.controls['Email']?.errors?.required">Email is required
+            </mat-error>
+            <mat-error *ngIf="ProfileFormGroup?.controls['Email']?.errors?.pattern">Please Enter valid
+                Email
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Phone</mat-label>
+            <input matInput formControlName="Phone" placeholder="Phone" type="text">
+        <mat-error *ngIf="ProfileFormGroup?.controls['Phone']?.errors?.minlength || ProfileFormGroup?.controls['Phone']?.errors?.maxlength">Phone Number
+            must have 10 digits</mat-error>
+        <mat-error *ngIf="ProfileFormGroup?.controls['Phone']?.errors?.pattern">Please Enter valid
+                Phone Number
+            </mat-error>
+        </mat-form-field>
+
+        <br>
+
+        <button mat-raised-button color="primary" type="submit">Update</button>
+        <button mat-raised-button color="accent">Reset</button>
+        <button mat-raised-button color="warn">Delete Account</button>
+
+    </form>
+</div>
