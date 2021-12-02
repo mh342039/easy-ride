@@ -18,7 +18,7 @@ import { SearchResultComponent } from './component/search-result/search-result.c
 import { RideDetailsComponent } from './component/ride-details/ride-details.component';
 import { PublishRideComponent } from './component/publish-ride/publish-ride.component';
 import { MyRidesComponent } from './component/my-rides/my-rides.component';
-
+import { UpdateRidesComponent } from './component/update-rides/update-rides.component'
 
 //Modules
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,6 +29,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { HttpClientModule } from '@angular/common/http';
     SearchResultComponent,
     RideDetailsComponent,
     PublishRideComponent,
-    MyRidesComponent
+    MyRidesComponent,
+    UpdateRidesComponent
   ],
   imports: [
     BrowserModule,
