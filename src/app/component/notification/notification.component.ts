@@ -5,11 +5,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.css']
 })
-export class NotificationComponent implements OnInit {
+export class NotificationComponent  {
 
-  constructor() { }
+  showNotification: boolean | undefined;
+  constructor(){}
 
-  ngOnInit(): void {
+  // tslint:disable-next-line:typedef
+  openNotification(state: boolean) {
+    this.showNotification = state;
   }
 
 }
