@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { DataService } from 'src/app/services/data.service';
 import {MatDialog} from '@angular/material/dialog';
 import { TermsComponent } from '../terms/terms.component';
 import {FaqComponent} from '../faq/faq.component';
 import {ContactComponent} from '../contact/contact.component'
+
 
 @Component({
   selector: 'app-homepage',
@@ -13,10 +15,13 @@ import {ContactComponent} from '../contact/contact.component'
 })
 export class HomepageComponent implements OnInit {
 
+
   constructor(public dialog: MatDialog, private router: Router, public _dataService: DataService) { }
+
 
   ngOnInit(): void {
   }
+
 
   termsnc(){
  
@@ -49,4 +54,9 @@ contact(){
     
   });
 }
+
+  searchRide(){
+    this.router.navigateByUrl('/main/search-result')
+  }
+
 }

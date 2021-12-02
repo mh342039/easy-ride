@@ -31,6 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { TermsComponent } from './component/terms/terms.component';
 import { FaqComponent } from './component/faq/faq.component';
 import { ContactComponent } from './component/contact/contact.component';
+import { RideSearchComponent } from './component/ride-search/ride-search.component';
+
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { ContactComponent } from './component/contact/contact.component';
     TermsComponent,
     FaqComponent,
     ContactComponent
+    RideSearchComponent
   ],
   imports: [
     BrowserModule,

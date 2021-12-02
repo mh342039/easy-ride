@@ -16,6 +16,10 @@ export class HttpService {
     return this.http.get(this.URL + path);
   }
 
+  getServiceCallWithQueryParameter(path: string, queryParameter: string){
+    return this.http.get(this.URL + path + '?' + queryParameter);
+  }
+
   postServiceCall(path: string, data:any ){
     return this.http.post(this.URL + path, data);
   }
