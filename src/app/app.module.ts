@@ -52,7 +52,7 @@ import { RideSearchComponent } from './component/ride-search/ride-search.compone
     MyRidesComponent,
     TermsComponent,
     FaqComponent,
-    ContactComponent
+    ContactComponent,
     RideSearchComponent
   ],
   imports: [

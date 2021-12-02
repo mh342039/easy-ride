@@ -7,7 +7,10 @@ export class DataService {
 
   public userSession: any;
   searchResult: any
-  constructor() { }
+  constructor() {
+    this.rePopulateUserSession()
+
+   }
 
   clearUserSession(){
     localStorage.removeItem('user-session')
@@ -24,7 +27,12 @@ export class DataService {
   }
 
   getAccessToken(){
+    if(this.userSession){
     return this.userSession.access_token
+    }
+    else{
+      return null
+    }
   }
 
   
