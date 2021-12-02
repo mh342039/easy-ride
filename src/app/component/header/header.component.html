@@ -1,11 +1,11 @@
 <header class="header">
     <div class="row no-margin">
         <div class="col-md-3">
-            
+
             <img
             width=50%;
             height=70vh;
-            src="assets/images/logo.jpeg"/> 
+            src="assets/images/logo.jpeg"/>
         </div>
         <div class="col-md-9 right-align">
             <a class="link" routerLink="/main/publish-ride">
@@ -21,6 +21,11 @@
                 <span class="glyphicon glyphicon-edit no-border-icon"></span>
                 <span>Sign Up</span>
             </a>
+          <a class="link" (click)="notification()" *ngIf="!_dataService?.userSession">
+            <span class="glyphicon glyphicon-bell no-border-icon"></span>
+            <span>Notification</span>
+
+          </a>
             <a class="dropdown link" *ngIf="_dataService?.userSession">
                 <span class="glyphicon glyphicon-user icon user-icon dropdown-toggle" data-toggle="dropdown"></span>
 

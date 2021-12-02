@@ -4,6 +4,7 @@ import { DataService } from 'src/app/services/data.service';
 import {MatDialog} from '@angular/material/dialog';
 import { SignInComponent } from '../sign-in/sign-in.component';
 import { SignUpComponent } from '../sign-up/sign-up.component';
+import {NotificationComponent} from '../notification/notification.component';
 
 @Component({
   selector: 'app-header',
@@ -29,9 +30,15 @@ export class HeaderComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      
+
     });
 
+  }
+
+  notification(){
+    const dialogRef = this.dialog.open(NotificationComponent,{
+      width:'500px',
+    });
   }
 
   logout(){
@@ -39,5 +46,5 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/main/home-page')
   }
 
- 
+
 }

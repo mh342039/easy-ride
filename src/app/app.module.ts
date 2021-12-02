@@ -31,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TermsComponent } from './component/terms/terms.component';
 import { FaqComponent } from './component/faq/faq.component';
 import { ContactComponent } from './component/contact/contact.component';
+import { NotificationComponent } from './component/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { ContactComponent } from './component/contact/contact.component';
     MyRidesComponent,
     TermsComponent,
     FaqComponent,
-    ContactComponent
+    ContactComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
