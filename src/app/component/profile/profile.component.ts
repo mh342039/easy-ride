@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { HttpService } from 'src/app/services/http.service';
 import { UtilityService } from 'src/app/services/utility.service';
@@ -12,7 +13,7 @@ import { UtilityService } from 'src/app/services/utility.service';
 export class ProfileComponent implements OnInit {
   public ProfileFormGroup: any;
 
-  constructor(private fb: FormBuilder, private _utiltyservice: UtilityService, private _httpService: HttpService, private _dataservice: DataService) {
+  constructor(private fb: FormBuilder, private router: Router, private _utiltyservice: UtilityService, private _httpService: HttpService, private _dataservice: DataService) {
     this.ProfileFormGroup = new FormGroup({
       FirstName: new FormControl(''),
       LastName: new FormControl(''),
@@ -23,6 +24,10 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(!this._dataservice.getAccessToken()){
+      this.router.navigateByUrl('/main/home-page')
+    }
+    else{
     this._utiltyservice.loader = true
     this._httpService.getServiceCall('/account?access_token=' + this._dataservice.getAccessToken())
     .subscribe((result: any)=>{
@@ -44,6 +49,7 @@ export class ProfileComponent implements OnInit {
     (error: any)=>{
       console.log(error)
     })
+  }
   }
 
 

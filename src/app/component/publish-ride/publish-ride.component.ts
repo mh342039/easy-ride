@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { HttpService } from 'src/app/services/http.service';
 import { UtilityService } from 'src/app/services/utility.service';
@@ -13,7 +14,7 @@ export class PublishRideComponent implements OnInit {
 
   public RideFormGroup: any;
   minDate:any;
-  constructor(private fb: FormBuilder, private _utiltyservice: UtilityService, private _httpService: HttpService, private _dataservice: DataService) { 
+  constructor(private router: Router, private fb: FormBuilder, private _utiltyservice: UtilityService, private _httpService: HttpService, private _dataservice: DataService) { 
     this.RideFormGroup = new FormGroup({
       RideTitle: new FormControl(''),
       Origin: new FormControl(''),
@@ -24,6 +25,10 @@ export class PublishRideComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(!this._dataservice.getAccessToken()){
+      this.router.navigateByUrl('/main/home-page')
+    }
+    else{
     var todayDate = new Date().toISOString();
     this.minDate = todayDate.substring(0,todayDate.length-8);
     this.RideFormGroup = this.fb.group({
@@ -40,6 +45,7 @@ export class PublishRideComponent implements OnInit {
 
     });
   }
+}
 
 
   publish() {
