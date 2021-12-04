@@ -16,6 +16,10 @@ export class HttpService {
     return this.http.get(this.URL + path);
   }
 
+  getServiceCallWithQueryParameter(path: string, queryParameter: string){
+    return this.http.get(this.URL + path + '?' + queryParameter);
+  }
+
   postServiceCall(path: string, data:any ){
     return this.http.post(this.URL + path, data);
   }
@@ -28,7 +32,7 @@ export class HttpService {
     return this.http.delete(this.URL + path, data);
   }
 
-  deleteServiceCallwithQueryparameter(path: string, query:string, data:any ){
+  deleteServiceCallwithQueryparameter(path: string, query:string, data:any = null){
     return this.http.delete(this.URL + path + '?' + query, data);
   }
 

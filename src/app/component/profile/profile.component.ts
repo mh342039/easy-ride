@@ -65,4 +65,14 @@ export class ProfileComponent implements OnInit {
         })
   }
 
+  deleteAccount(){
+    let query = 'access_token=' + this._dataservice.getAccessToken()
+    this._httpService.deleteServiceCallwithQueryparameter("/account", query)
+      .subscribe((result: any) => {
+        console.log(result)
+      },
+        (error: any) => {
+          console.log(error)
+        })
+  }
 }

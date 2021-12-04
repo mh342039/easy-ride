@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class DataService {
 
   public userSession: any;
-
+  searchResult: any
   constructor() { }
 
   clearUserSession(){
@@ -26,4 +26,6 @@ export class DataService {
   getAccessToken(){
     return this.userSession.access_token
   }
+
+  
 }

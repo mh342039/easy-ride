@@ -20,6 +20,7 @@ import { PublishRideComponent } from './component/publish-ride/publish-ride.comp
 import { MyRidesComponent } from './component/my-rides/my-rides.component';
 import { UpdateRidesComponent } from './component/update-rides/update-rides.component'
 
+
 //Modules
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -29,6 +30,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
+import { TermsComponent } from './component/terms/terms.component';
+import { FaqComponent } from './component/faq/faq.component';
+import { ContactComponent } from './component/contact/contact.component';
+import { RideSearchComponent } from './component/ride-search/ride-search.component';
+
 
 
 @NgModule({
@@ -47,7 +53,12 @@ import { HttpClientModule } from '@angular/common/http';
     RideDetailsComponent,
     PublishRideComponent,
     MyRidesComponent,
-    UpdateRidesComponent
+    UpdateRidesComponent,
+    TermsComponent,
+    FaqComponent,
+    ContactComponent,
+    RideSearchComponent
+
   ],
   imports: [
     BrowserModule,
