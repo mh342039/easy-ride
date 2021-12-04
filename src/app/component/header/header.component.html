@@ -12,16 +12,16 @@
                 <span class="glyphicon glyphicon-plus publish-icon"></span>
                 <span>Publish a ride</span>
                 </a>
-            <a class="link" (click)="logIn()" *ngIf="!_dataService?.userSession">
+            <a class="link" (click)="logIn()" *ngIf="!_dataService?.userSession?.access_token">
                 <span class="glyphicon glyphicon-log-in no-border-icon"></span>
             <span>Log In</span>
 
             </a>
-            <a class="link" (click)="signUp()"*ngIf="!_dataService?.userSession" >
+            <a class="link" (click)="signUp()"*ngIf="!_dataService?.userSession?.access_token" >
                 <span class="glyphicon glyphicon-edit no-border-icon"></span>
                 <span>Sign Up</span>
             </a>
-            <a class="dropdown link" *ngIf="_dataService?.userSession">
+            <a class="dropdown link" *ngIf="_dataService?.userSession?.access_token">
                 <span class="glyphicon glyphicon-user icon user-icon dropdown-toggle" data-toggle="dropdown"></span>
 
                 <ul class="dropdown-menu menu-position">

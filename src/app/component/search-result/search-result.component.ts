@@ -8,17 +8,10 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./search-result.component.css']
 })
 export class SearchResultComponent implements OnInit {
-  constructor(private _httpService: HttpService, private _dataservice: DataService, private cd: ChangeDetectorRef) { }
+  constructor(private _httpService: HttpService, public _dataservice: DataService, private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    let queryParameter = 'access_token='+ this._dataservice.getAccessToken()
-    this._httpService.getServiceCallWithQueryParameter('/rides', queryParameter)
-    .subscribe((result: any)=>{
-      console.log(result)
-    },
-    (error: any)=>{
-      console.log(error)
-    })
+    console.log(this._dataservice.searchCriteria)
   }
 
   searchRide(){

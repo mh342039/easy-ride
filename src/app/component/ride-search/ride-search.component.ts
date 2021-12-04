@@ -15,7 +15,7 @@ export class RideSearchComponent implements OnInit {
 
   public SearchFormGroup: any;
 
-  constructor(private _utilityservice: UtilityService, private fb: FormBuilder, private _dataservice: DataService, private _httpService: HttpService, private router: Router) { 
+  constructor(private _utilityservice: UtilityService, private fb: FormBuilder, public _dataservice: DataService, private _httpService: HttpService, private router: Router) { 
     this.SearchFormGroup = new FormGroup({
       LeaveFrom: new FormControl(''),
       GoingTo: new FormControl(''),
@@ -38,11 +38,19 @@ export class RideSearchComponent implements OnInit {
     } );
   }
   search(){
-    let query = ""
+    let query = 'access_token=' + this._dataservice.getAccessToken()
+    for (let f in this.SearchFormGroup.value) {
+      if (this.SearchFormGroup.value[f] && f!="Passanger") {
+        query = query + '&query=' + this.SearchFormGroup.value[f]
+        break;
+      }
+    }
+
     if(this._dataservice.getAccessToken()){
-    this._httpService.getServiceCallWithQueryParameter('/rides','access_token='+this._dataservice.getAccessToken() + '&query='+ query)
+    this._httpService.getServiceCallWithQueryParameter('/rides',query)
     .subscribe((result: any)=>{
       console.log(result)
+      this._dataservice.searchCriteria = this.SearchFormGroup.value
       this._dataservice.searchResult = result
       this.searchRide.emit();
     },
