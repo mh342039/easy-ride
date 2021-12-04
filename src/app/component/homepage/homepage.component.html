@@ -3,22 +3,24 @@
        
     <img
     width=100%
-    height=460px;
+    style="height: 44vh;"
     src="assets/images/carpool.jpeg"/> 
+<div style="height: 80px;">
+    <app-ride-search (searchRide)="searchRide()"></app-ride-search>
+</div>
 
-<app-ride-search (searchRide)="searchRide()"></app-ride-search>
     <div class="container"> 
-        <div>
+        <div class="sub-container">
             <p style="text-align: center;"> <i class="fa fa-dollar fa-2x"></i>  </p><br/>
             <p style="text-align: center;"> <strong> Low cost </strong> </p>
             <p class="words"> Find the right journey from our large choice of destinations and routes at reasonable costs</p>
         </div>
-        <div>
+        <div class="sub-container">
             <p style="text-align: center;"> <i class="fa fa-handshake-o fa-2x" aria-hidden="true"></i> </p> <br/>
             <p style="text-align: center;"> <strong> Know your mates </strong> </p>
             <p class="words"> We take time to know your travel mate. We check their profiles and IDs, so you know whom you're riding with and can book at ease on our safe platform</p>
         </div>
-        <div>
+        <div class="sub-container">
             <p style="text-align: center;"> <i class="fa fa-bolt fa-2x"></i> </p> <br/>
             <p style="text-align: center;"> <strong> Fast Booking </strong> </p>
             <p class="words"> It's never been easier to book a ride! You may book a ride near you in minutes with our easy app, which is powered by cutting-edge technology.</p>
