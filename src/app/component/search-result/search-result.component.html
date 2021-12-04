@@ -5,6 +5,37 @@
         <app-ride-search (searchRide)="searchRide()"></app-ride-search>
     </div>
     <div class="result-container">
+        <div class="body">
+            <p style="padding-left: 40px;"> From {{_dataservice?.searchCriteria?.LeaveFrom}} </p>
+            <p style="padding-left: 40px;"> <strong> {{_dataservice?.searchResult?.length}} </strong> ride available </p>
+            <div class="ride-container">
+                <div class="ride" *ngFor="let ride of _dataservice.searchResult">
+                    <div class="content">
+                        <div class="time">
+                            <span> {{ride?.time}} </span>
+
+                        </div>
+                        <div class="location">
+                            <span> {{ride?.origin}} </span>
+                            <span> {{ride?.destination}} </span>
+                        </div>
+                        <div class="price">
+                            <span style="float: right"> $&nbsp;{{ride?.price}} </span>
+                        </div>
+                        <div class="action">
+                            <a> Book </a>
+                        </div>
+
+                    </div>
+
+                    <div class="name">
+                        <span class="glyphicon glyphicon-user icon user-icon dropdown-toggle"
+                            data-toggle="dropdown"></span>
+                        <span> {{ride?.ride_title}} </span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>
