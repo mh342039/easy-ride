@@ -1,25 +1,27 @@
 <header class="header">
     <div class="row no-margin">
         <div class="col-md-3">
-            Logo
+            
+            <img
+            width=50%;
+            height=70vh;
+            src="assets/images/logo.jpeg"/> 
         </div>
-        <div class="col-md-7 right-align">
+        <div class="col-md-9 right-align">
             <a class="link" routerLink="/main/publish-ride">
                 <span class="glyphicon glyphicon-plus publish-icon"></span>
                 <span>Publish a ride</span>
                 </a>
-            <a class="link" (click)="logIn()">
+            <a class="link" (click)="logIn()" *ngIf="!_dataService?.userSession?.access_token">
                 <span class="glyphicon glyphicon-log-in no-border-icon"></span>
             <span>Log In</span>
 
             </a>
-            <a class="link" (click)="signUp()">
+            <a class="link" (click)="signUp()"*ngIf="!_dataService?.userSession?.access_token" >
                 <span class="glyphicon glyphicon-edit no-border-icon"></span>
                 <span>Sign Up</span>
             </a>
-        </div>
-        <div class="col-md-2" *ngIf="_dataService.userSession">
-            <a class="dropdown link">
+            <a class="dropdown link" *ngIf="_dataService?.userSession?.access_token">
                 <span class="glyphicon glyphicon-user icon user-icon dropdown-toggle" data-toggle="dropdown"></span>
 
                 <ul class="dropdown-menu menu-position">
@@ -31,6 +33,8 @@
                     Log out</a></li>
                 </ul>
             </a>
+
         </div>
+
     </div>
 </header>
