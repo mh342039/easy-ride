@@ -7,6 +7,7 @@ import { SignInComponent } from '../component/sign-in/sign-in.component';
 })
 export class UtilityService {
 
+  loader: boolean = false
   constructor(public dialog: MatDialog) { }
 
   logIn(){

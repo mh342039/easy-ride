@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 import { HttpService } from 'src/app/services/http.service';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +12,7 @@ import { HttpService } from 'src/app/services/http.service';
 export class ProfileComponent implements OnInit {
   public ProfileFormGroup: any;
 
-  constructor(private fb: FormBuilder, private _httpService: HttpService, private _dataservice: DataService) {
+  constructor(private fb: FormBuilder, private _utiltyservice: UtilityService, private _httpService: HttpService, private _dataservice: DataService) {
     this.ProfileFormGroup = new FormGroup({
       FirstName: new FormControl(''),
       LastName: new FormControl(''),
@@ -22,9 +23,11 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this._utiltyservice.loader = true
     this._httpService.getServiceCall('/account?access_token=' + this._dataservice.getAccessToken())
     .subscribe((result: any)=>{
       console.log(result)
+      this._utiltyservice.loader = false
       this.ProfileFormGroup = this.fb.group({
 
         FirstName: [result.first_name, [Validators.required, Validators.pattern("([a-zA-Z0-9 ]+)")]],
@@ -48,7 +51,7 @@ export class ProfileComponent implements OnInit {
     if (this.ProfileFormGroup.status == "INVALID") {
       return;
     }
-
+    this._utiltyservice.loader = true
     let query = 'access_token=' + this._dataservice.getAccessToken()
     for (let f in this.ProfileFormGroup.value) {
       if (this.ProfileFormGroup.value[f]) {
@@ -59,6 +62,7 @@ export class ProfileComponent implements OnInit {
     this._httpService.patchServiceCallwithQueryParameters("/account", query)
       .subscribe((result: any) => {
         console.log(result)
+        this._utiltyservice.loader = false
       },
         (error: any) => {
           console.log(error)
@@ -66,10 +70,12 @@ export class ProfileComponent implements OnInit {
   }
 
   deleteAccount(){
+    this._utiltyservice.loader = true
     let query = 'access_token=' + this._dataservice.getAccessToken()
     this._httpService.deleteServiceCallwithQueryparameter("/account", query)
       .subscribe((result: any) => {
         console.log(result)
+        this._utiltyservice.loader = false
       },
         (error: any) => {
           console.log(error)

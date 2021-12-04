@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/services/http.service';
+import { UtilityService } from 'src/app/services/utility.service';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -9,7 +10,7 @@ import { HttpService } from 'src/app/services/http.service';
 export class SignUpComponent implements OnInit {
   public ProfileFormGroup: any;
 
-  constructor(private fb: FormBuilder, private _httpService: HttpService) { 
+  constructor(private fb: FormBuilder, private _utiltyservice: UtilityService, private _httpService: HttpService) { 
     this.ProfileFormGroup = new FormGroup({
       FirstName: new FormControl(''),
       LastName: new FormControl(''),
@@ -57,7 +58,8 @@ export class SignUpComponent implements OnInit {
     if(this.ProfileFormGroup.status == "INVALID"){
       return;
     }
-
+    
+    this._utiltyservice.loader = true
     let data: FormData = new FormData();
     data.append("first_name", this.ProfileFormGroup.value.FirstName )
     data.append("last_name", this.ProfileFormGroup.value.LastName )
@@ -67,6 +69,7 @@ export class SignUpComponent implements OnInit {
 
     this._httpService.postServiceCall("/register",data)
     .subscribe((result: any)=>{
+      this._utiltyservice.loader = false  
       console.log(result)
     },
     (error: any)=>{

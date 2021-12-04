@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 import { HttpService } from 'src/app/services/http.service';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-publish-ride',
@@ -12,7 +13,7 @@ export class PublishRideComponent implements OnInit {
 
   public RideFormGroup: any;
   minDate:any;
-  constructor(private fb: FormBuilder, private _httpService: HttpService, private _dataservice: DataService) { 
+  constructor(private fb: FormBuilder, private _utiltyservice: UtilityService, private _httpService: HttpService, private _dataservice: DataService) { 
     this.RideFormGroup = new FormGroup({
       RideTitle: new FormControl(''),
       Origin: new FormControl(''),
@@ -46,6 +47,7 @@ export class PublishRideComponent implements OnInit {
       return;
     }
 
+    this._utiltyservice.loader = true
     let data: FormData = new FormData();
     data.append("access_token", this._dataservice.getAccessToken())
     data.append("ride_title", this.RideFormGroup.value.RideTitle )
@@ -57,6 +59,7 @@ export class PublishRideComponent implements OnInit {
     this._httpService.postServiceCall("/rides",data)
     .subscribe((result: any)=>{
       console.log(result)
+      this._utiltyservice.loader = false
     },
     (error: any)=>{
       console.log(error)
