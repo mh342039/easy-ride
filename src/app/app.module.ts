@@ -18,6 +18,8 @@ import { SearchResultComponent } from './component/search-result/search-result.c
 import { RideDetailsComponent } from './component/ride-details/ride-details.component';
 import { PublishRideComponent } from './component/publish-ride/publish-ride.component';
 import { MyRidesComponent } from './component/my-rides/my-rides.component';
+import { UpdateRidesComponent } from './component/update-rides/update-rides.component'
+
 
 //Modules
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,6 +34,7 @@ import { TermsComponent } from './component/terms/terms.component';
 import { FaqComponent } from './component/faq/faq.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { RideSearchComponent } from './component/ride-search/ride-search.component';
+
 
 
 @NgModule({
@@ -50,10 +53,12 @@ import { RideSearchComponent } from './component/ride-search/ride-search.compone
     RideDetailsComponent,
     PublishRideComponent,
     MyRidesComponent,
+    UpdateRidesComponent,
     TermsComponent,
     FaqComponent,
-    ContactComponent
+    ContactComponent,
     RideSearchComponent
+
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ import { SearchResultComponent } from './component/search-result/search-result.c
 import { SignInComponent } from './component/sign-in/sign-in.component';
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { UpdatePasswordComponent } from './component/update-password/update-password.component';
+import {UpdateRidesComponent} from './component/update-rides/update-rides.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -23,6 +24,7 @@ const routes: Routes = [
       { path: 'search-result', component: SearchResultComponent },
       { path: 'ride-details', component: RideDetailsComponent },
       { path: 'my-rides', component: MyRidesComponent },
+      { path: 'update-rides', component: UpdateRidesComponent },
       { path: 'publish-ride', component: PublishRideComponent },
       { path: 'profile', component: ProfileComponent },
     ]
