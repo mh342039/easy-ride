@@ -6,6 +6,10 @@
     text-align: end;
 }
 
+.logo{
+    cursor: pointer;
+}
+
 .link:hover{
     text-decoration: none;
 }
