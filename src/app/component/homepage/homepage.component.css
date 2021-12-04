@@ -36,10 +36,8 @@
 
 .footer-container {
   background: rgb(220, 220, 220);
-  height: 15vh;
-    position: fixed;
-    bottom: 0;
-    width: 100vw;
+  height: 20vh;
+
 }
 
 .footer-link-container {
