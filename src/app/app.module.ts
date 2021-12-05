@@ -35,6 +35,7 @@ import { FaqComponent } from './component/faq/faq.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { RideSearchComponent } from './component/ride-search/ride-search.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MessageComponent } from './component/message/message.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     TermsComponent,
     FaqComponent,
     ContactComponent,
-    RideSearchComponent
+    RideSearchComponent,
+    MessageComponent
 
   ],
   imports: [

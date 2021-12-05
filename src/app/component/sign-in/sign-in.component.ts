@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
 import { HttpService } from 'src/app/services/http.service';
 import { UtilityService } from 'src/app/services/utility.service';
+import { MessageComponent } from '../message/message.component';
 
 @Component({
   selector: 'app-sign-in',
@@ -13,7 +14,7 @@ import { UtilityService } from 'src/app/services/utility.service';
 export class SignInComponent implements OnInit {
   public SignInFormGroup: any;
 
-  constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<SignInComponent>, private _utiltyservice: UtilityService, private _dataservice:DataService, private _httpService: HttpService) { 
+  constructor(private dialog: MatDialog, private fb: FormBuilder, private dialogRef: MatDialogRef<SignInComponent>, private _utiltyservice: UtilityService, private _dataservice:DataService, private _httpService: HttpService) { 
     this.SignInFormGroup = new FormGroup({
       Email: new FormControl(''),
       Password: new FormControl(''),
@@ -45,10 +46,28 @@ export class SignInComponent implements OnInit {
       this._utiltyservice.loader = false;
       this._dataservice.createUserSession(result)
       this.dialogRef.close()
-      console.log(result)
     },
     (error: any)=>{
-      console.log(error)
+      this._utiltyservice.loader = false;
+
+      if(error.status == 401){
+        this.dialog.open(MessageComponent, {
+          data: {
+            type: 'E',
+            title: 'Message',
+            message: "Incorrect Email/Password",
+          }
+        });
+      }
+      else{
+        this.dialog.open(MessageComponent, {
+          data: {
+            type: 'E',
+            title: 'System Error',
+            message: 'Something Went Wrong. Please Try Again.',
+          }
+        });
+      }
     })
   }
 }

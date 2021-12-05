@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { HttpService } from 'src/app/services/http.service';
 import { UtilityService } from 'src/app/services/utility.service';
+import { MessageComponent } from '../message/message.component';
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +15,13 @@ import { UtilityService } from 'src/app/services/utility.service';
 export class ProfileComponent implements OnInit {
   public ProfileFormGroup: any;
 
-  constructor(private fb: FormBuilder, private router: Router, private _utiltyservice: UtilityService, private _httpService: HttpService, private _dataservice: DataService) {
+  alaisDict: any = {
+    "FirstName":"first_name",
+    "LastName":"last_name",
+    "Email":"email",
+    "Phone":"phone_number",
+  }
+  constructor(private dialog: MatDialog, private fb: FormBuilder, private router: Router, private _utiltyservice: UtilityService, private _httpService: HttpService, private _dataservice: DataService) {
     this.ProfileFormGroup = new FormGroup({
       FirstName: new FormControl(''),
       LastName: new FormControl(''),
@@ -31,7 +39,6 @@ export class ProfileComponent implements OnInit {
     this._utiltyservice.loader = true
     this._httpService.getServiceCall('/account?access_token=' + this._dataservice.getAccessToken())
     .subscribe((result: any)=>{
-      console.log(result)
       this._utiltyservice.loader = false
       this.ProfileFormGroup = this.fb.group({
 
@@ -47,8 +54,14 @@ export class ProfileComponent implements OnInit {
   
     },
     (error: any)=>{
-      console.log(error)
-    })
+      this.dialog.open(MessageComponent, {
+        data: {
+          type: 'E',
+          title: 'System Error',
+          message: 'Something Went Wrong. Please Try Again.',
+        }
+      });
+})
   }
   }
 
@@ -61,17 +74,31 @@ export class ProfileComponent implements OnInit {
     let query = 'access_token=' + this._dataservice.getAccessToken()
     for (let f in this.ProfileFormGroup.value) {
       if (this.ProfileFormGroup.value[f]) {
-        query = query + '&' + f + '=' + this.ProfileFormGroup.value[f]
+        query = query + '&' + this.alaisDict[f] + '=' + this.ProfileFormGroup.value[f]
       }
     }
 
     this._httpService.patchServiceCallwithQueryParameters("/account", query)
       .subscribe((result: any) => {
-        console.log(result)
         this._utiltyservice.loader = false
+        const dialogRef = this.dialog.open(MessageComponent, {
+          data: {
+            type: 'C',
+            title: 'Success!',
+            message: 'Account Updated Successfully!. Thanks for the Update!',
+            duration: 3000
+          }
+        });
+
       },
         (error: any) => {
-          console.log(error)
+          this.dialog.open(MessageComponent, {
+            data: {
+              type: 'E',
+              title: 'System Error',
+              message: 'Something Went Wrong. Please Try Again.',
+            }
+          });
         })
   }
 
@@ -80,11 +107,28 @@ export class ProfileComponent implements OnInit {
     let query = 'access_token=' + this._dataservice.getAccessToken()
     this._httpService.deleteServiceCallwithQueryparameter("/account", query)
       .subscribe((result: any) => {
-        console.log(result)
+        const dialogRef = this.dialog.open(MessageComponent, {
+          data: {
+            type: 'C',
+            title: 'Account Deleted Successfully!',
+            message: 'Hope you had a pleasent experience!. See you soon!',
+            duration: 3000
+          }
+        });
+        dialogRef.afterClosed().subscribe(r => {
+          this.router.navigateByUrl('/main/home-page')
+        })
         this._utiltyservice.loader = false
+        this._dataservice.clearUserSession()
       },
         (error: any) => {
-          console.log(error)
-        })
+          this.dialog.open(MessageComponent, {
+            data: {
+              type: 'E',
+              title: 'System Error',
+              message: 'Something Went Wrong. Please Try Again.',
+            }
+          });
+                })
   }
 }
