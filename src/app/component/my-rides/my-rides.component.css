@@ -47,3 +47,7 @@
 .action {
   padding: 20px 20px;
 }
+
+.pre-scrollable{
+  overflow: auto;
+}

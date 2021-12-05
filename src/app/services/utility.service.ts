@@ -15,4 +15,8 @@ export class UtilityService {
       width: '500px',
     });
   }
+
+  deleteRide(){
+    
+  }
 }
