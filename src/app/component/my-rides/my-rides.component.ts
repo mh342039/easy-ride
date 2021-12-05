@@ -15,6 +15,9 @@ export class MyRidesComponent implements OnInit {
   constructor(public dialog: MatDialog, private router: Router, public _dataService: DataService) { }
 
   ngOnInit(): void {
+    if(!this._dataService.getAccessToken()){
+      this.router.navigateByUrl('/main/home-page')
+    }
   }
 
   edit(){

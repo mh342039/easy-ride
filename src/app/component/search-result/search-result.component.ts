@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { HttpService } from 'src/app/services/http.service';
 
@@ -8,17 +9,12 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./search-result.component.css']
 })
 export class SearchResultComponent implements OnInit {
-  constructor(private _httpService: HttpService, private _dataservice: DataService, private cd: ChangeDetectorRef) { }
+  constructor(private _httpService: HttpService, private router: Router, public _dataservice: DataService, private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    let queryParameter = 'access_token='+ this._dataservice.getAccessToken()
-    this._httpService.getServiceCallWithQueryParameter('/rides', queryParameter)
-    .subscribe((result: any)=>{
-      console.log(result)
-    },
-    (error: any)=>{
-      console.log(error)
-    })
+    if(!this._dataservice.getAccessToken()){
+      this.router.navigateByUrl('/main/home-page')
+    }
   }
 
   searchRide(){

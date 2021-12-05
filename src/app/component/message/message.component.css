@@ -1,0 +1,18 @@
+.message-section{
+    width: 40vw;
+    text-align: center;
+    overflow: hidden;
+}
+
+.message-button{
+    margin: 15px;
+}
+
+.message-warn-button{
+    background-color: #c70f00;
+    color: white;
+}
+
+.message-button-div{
+    float:right
+}

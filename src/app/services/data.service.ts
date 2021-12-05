@@ -7,25 +7,42 @@ export class DataService {
 
   public userSession: any;
   searchResult: any
-  constructor() { }
+  searchCriteria: any = {
+    access_token: "",
+    email: "",
+    first_name: "",
+    last_name: "",
+    phone_number: ""
+  }
+  constructor() {
+    this.rePopulateUserSession();
+    
+  }
 
-  clearUserSession(){
-    localStorage.removeItem('user-session')
+  clearUserSession() {
     this.userSession = null
+    localStorage.removeItem('user-session')
+    
   }
 
-  rePopulateUserSession(){
-  this.userSession = localStorage.getItem('user-session')
+  rePopulateUserSession() {
+    let session : any = localStorage.getItem('user-session')
+    this.userSession = JSON.parse(session)
   }
 
-  createUserSession(obj: any){
-    localStorage.setItem('user-session', obj)
+  createUserSession(obj: any) {
+    localStorage.setItem('user-session', JSON.stringify(obj))
     this.userSession = obj
   }
 
-  getAccessToken(){
-    return this.userSession.access_token
+  getAccessToken() {
+    if (this.userSession) {
+      return this.userSession.access_token
+    }
+    else {
+      return null
+    }
   }
 
-  
+
 }

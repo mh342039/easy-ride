@@ -23,7 +23,7 @@ import { UpdateRidesComponent } from './component/update-rides/update-rides.comp
 
 //Modules
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule, } from '@angular/forms'
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -34,7 +34,8 @@ import { TermsComponent } from './component/terms/terms.component';
 import { FaqComponent } from './component/faq/faq.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { RideSearchComponent } from './component/ride-search/ride-search.component';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MessageComponent } from './component/message/message.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { RideSearchComponent } from './component/ride-search/ride-search.compone
     TermsComponent,
     FaqComponent,
     ContactComponent,
-    RideSearchComponent
+    RideSearchComponent,
+    MessageComponent
 
   ],
   imports: [
@@ -65,13 +67,14 @@ import { RideSearchComponent } from './component/ride-search/ride-search.compone
     AppRoutingModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatCardModule,
     MatInputModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
