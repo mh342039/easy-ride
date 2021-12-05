@@ -15,8 +15,8 @@ export class DataService {
     phone_number: ""
   }
   constructor() {
-    this.rePopulateUserSession()
-
+    this.rePopulateUserSession();
+    
   }
 
   clearUserSession() {
@@ -25,11 +25,12 @@ export class DataService {
   }
 
   rePopulateUserSession() {
-    this.userSession = localStorage.getItem('user-session')
+    let session : any = localStorage.getItem('user-session')
+    this.userSession = JSON.parse(session)
   }
 
   createUserSession(obj: any) {
-    localStorage.setItem('user-session', obj)
+    localStorage.setItem('user-session', JSON.stringify(obj))
     this.userSession = obj
   }
 
