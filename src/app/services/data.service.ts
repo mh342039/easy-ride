@@ -20,8 +20,9 @@ export class DataService {
   }
 
   clearUserSession() {
-    localStorage.removeItem('user-session')
     this.userSession = null
+    localStorage.removeItem('user-session')
+    
   }
 
   rePopulateUserSession() {

@@ -33,7 +33,7 @@ export class HttpService {
   }
 
   deleteServiceCallwithQueryparameter(path: string, query:string, data:any = null){
-    return this.http.delete(this.URL + path + '?' + query, data);
+    return this.http.delete(this.URL + path + '?' + query);
   }
 
   patchServiceCallwithQueryParameters(path: string, query:string, data: any = null ){

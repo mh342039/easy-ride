@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { HttpService } from 'src/app/services/http.service';
 import { UtilityService } from 'src/app/services/utility.service';
+import { MessageComponent } from '../message/message.component';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -10,7 +12,7 @@ import { UtilityService } from 'src/app/services/utility.service';
 export class SignUpComponent implements OnInit {
   public ProfileFormGroup: any;
 
-  constructor(private fb: FormBuilder, private _utiltyservice: UtilityService, private _httpService: HttpService) { 
+  constructor(private dialog: MatDialog, private signupDialogRef: MatDialogRef<SignUpComponent>, private fb: FormBuilder, private _utiltyservice: UtilityService, private _httpService: HttpService) {
     this.ProfileFormGroup = new FormGroup({
       FirstName: new FormControl(''),
       LastName: new FormControl(''),
@@ -18,7 +20,7 @@ export class SignUpComponent implements OnInit {
       Password: new FormControl(''),
       ConfirmPassword: new FormControl(''),
     });
-  
+
   }
 
   ngOnInit(): void {
@@ -55,26 +57,42 @@ export class SignUpComponent implements OnInit {
   }
 
   Signup() {
-    if(this.ProfileFormGroup.status == "INVALID"){
+    if (this.ProfileFormGroup.status == "INVALID") {
       return;
     }
-    
+
     this._utiltyservice.loader = true
     let data: FormData = new FormData();
-    data.append("first_name", this.ProfileFormGroup.value.FirstName )
-    data.append("last_name", this.ProfileFormGroup.value.LastName )
-    data.append("email", this.ProfileFormGroup.value.Email) 
-    data.append("phone_number", this.ProfileFormGroup.value.Phone )
-    data.append("password", this.ProfileFormGroup.value.Password )
+    data.append("first_name", this.ProfileFormGroup.value.FirstName)
+    data.append("last_name", this.ProfileFormGroup.value.LastName)
+    data.append("email", this.ProfileFormGroup.value.Email)
+    data.append("phone_number", this.ProfileFormGroup.value.Phone)
+    data.append("password", this.ProfileFormGroup.value.Password)
 
-    this._httpService.postServiceCall("/register",data)
-    .subscribe((result: any)=>{
-      this._utiltyservice.loader = false  
-      console.log(result)
-    },
-    (error: any)=>{
-      console.log(error)
-    })
+    this._httpService.postServiceCall("/register", data)
+      .subscribe((result: any) => {
+        this._utiltyservice.loader = false
+        const dialogRef = this.dialog.open(MessageComponent, {
+          data: {
+            type: 'C',
+            title: 'Registration Successful!',
+            message: 'Registration Successful!. Thank you for your time!',
+            duration: 3000
+          }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+          this.signupDialogRef.close()
+        })
+      },
+        (error: any) => {
+          this.dialog.open(MessageComponent, {
+            data: {
+              type: 'E',
+              title: 'System Error',
+              message: 'Something Went Wrong. Please Try Again.',
+            }
+          });
+        })
   }
 
 }
