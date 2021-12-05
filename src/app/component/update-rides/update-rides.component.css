@@ -1,3 +1,7 @@
 .update-ride-container {
   padding: 50px 50px 36px 30px;
 }
+
+mat-form-field{
+  width: 100%;
+}

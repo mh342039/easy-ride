@@ -15,7 +15,7 @@ import { MessageComponent } from '../message/message.component';
 })
 export class MyRidesComponent implements OnInit {
 
-  myRide: any = []
+  
   constructor(public dialog: MatDialog, private _utilityservice: UtilityService, public _dataservice: DataService, private _httpService: HttpService, private router: Router, public _dataService: DataService) { }
 
   ngOnInit(): void {
@@ -23,41 +23,24 @@ export class MyRidesComponent implements OnInit {
       this.router.navigateByUrl('/main/home-page')
     }
     else {
-      this._utilityservice.loader = true
-
-      let query = 'access_token=' + this._dataservice.getAccessToken()
-      query = query + '&query=mumford'
-
-      if (this._dataservice.getAccessToken()) {
-        this._httpService.getServiceCallWithQueryParameter('/rides', query)
-          .subscribe((result: any) => {
-            this._utilityservice.loader = false
-            this.myRide = result
-          },
-            (error: any) => {
-              this.dialog.open(MessageComponent, {
-                data: {
-                  type: 'E',
-                  title: 'System Error',
-                  message: 'Something Went Wrong. Please Try Again.',
-                }
-              });
-            })
-      }
+      this._utilityservice.getMyRides()
     }
   }
 
-  edit() {
+  edit(rideId: any) {
 
     const dialogRef = this.dialog.open(UpdateRidesComponent, {
       width: '500px',
+      data: {
+        id: rideId
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
 
     });
   }
-  delete() {
-    this._utilityservice.deleteRide()
+  delete(rideId: any) {
+    this._utilityservice.deleteRide(rideId)
   }
 }

@@ -7,6 +7,7 @@ export class DataService {
 
   public userSession: any;
   searchResult: any
+  myRide: any = []
   postBack: any = "N"
   searchCriteria: any = {
     access_token: "",
