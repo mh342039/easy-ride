@@ -40,7 +40,6 @@ export class RideSearchComponent implements OnInit {
     } );
   }
   search(){
-    this._utilityservice.loader = true
 
     let query = 'access_token=' + this._dataservice.getAccessToken()
     for (let f in this.SearchFormGroup.value) {
@@ -51,6 +50,8 @@ export class RideSearchComponent implements OnInit {
     }
 
     if(this._dataservice.getAccessToken()){
+      this._utilityservice.loader = true
+
     this._httpService.getServiceCallWithQueryParameter('/rides',query)
     .subscribe((result: any)=>{
       this._utilityservice.loader = false
