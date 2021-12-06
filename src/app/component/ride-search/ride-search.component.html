@@ -9,17 +9,17 @@
 
     <mat-form-field>
         <mat-label>Going to*</mat-label>
-        <input matInput formControlName="GoingTo" placeholder="Going to" type="text">
+        <input matInput formControlName="GoingTo" placeholder="Going to" type="text" [(ngModel)]="_dataservice.searchCriteria.GoingTo">
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>Date*</mat-label>
-        <input matInput formControlName="Date" placeholder="Date" type="datetime-local">
+        <input matInput formControlName="Date" placeholder="Date" type="datetime-local" [(ngModel)]="_dataservice.searchCriteria.Date">
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>Passanger</mat-label>
-        <input matInput formControlName="Passanger" placeholder="Passanger" type="number">
+        <input matInput formControlName="Passanger" placeholder="Passanger" type="number" [(ngModel)]="_dataservice.searchCriteria.Passanger">
     </mat-form-field>
 
     <button mat-raised-button color="primary" type="submit">Search</button>
