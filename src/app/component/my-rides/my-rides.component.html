@@ -1,11 +1,10 @@
-<div class="body" xmlns="http://www.w3.org/1999/html">
+<div class="body">
 
     <div class="ride-container">
-      <b><h1 style="padding-left: 10px;"> Tomorrow </h1></b>
-      <p style="padding-left: 10px;"> Halifax → Dartmouth </p>
-      <p style="padding-left: 10px;"> <strong> 2 </strong> ride available </p>
+      <p style="padding-left: 10px;"> Mumford Terminal → Dalhousie </p>
+      <p style="padding-left: 10px;"> <strong> {{_dataService.myRide.length}} </strong> ride available </p>
       <div class = "pre-scrollable" >
-        <div class="ride">
+        <!-- <div class="ride">
 
             <div class="content">
                 <div class="time">
@@ -62,7 +61,37 @@
           <span> Roger </span>
         </div>
 
-      </div>
+      </div> -->
+
+      <div class="ride" *ngFor="let ride of _dataService.myRide">
+        <div class="content">
+          <div class="time">
+            <span> {{ride?.time|date : 'fullDate'}} </span>
+           <br/>
+            <span>{{ride?.time|date :'HH:mm'}}</span>
+        </div>
+            <div class="location">
+                <span> {{ride?.origin}} </span>
+                <span> {{ride?.destination}} </span>
+            </div>
+            <div class="price">
+                <span style="float: right"> $&nbsp;{{ride?.price}} </span>
+            </div>
+            <div class="action">
+              <a (click)="edit(ride.id)"> Edit </a>
+            </div>
+            <div class="action">
+              <a (click)="delete(ride.id)"> Delete </a>
+            </div>
+
+        </div>
+
+        <div class="name">
+            <span class="glyphicon glyphicon-user icon user-icon dropdown-toggle"
+                data-toggle="dropdown"></span>
+            <span> {{ride?.ride_title}} </span>
+        </div>
+    </div>
 
     </div>
     </div>

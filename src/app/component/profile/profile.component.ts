@@ -54,6 +54,19 @@ export class ProfileComponent implements OnInit {
   
     },
     (error: any)=>{
+      this._utiltyservice.loader = false
+      if (error.status = 401){
+        this._dataservice.clearUserSession()
+        this.router.navigateByUrl('/main/home-page')
+        this.dialog.open(MessageComponent, {
+          data: {
+            type: 'E',
+            title: 'System Error',
+            message: 'Session Expired. Please Login Again.',
+          }
+        });
+      }
+      else{
       this.dialog.open(MessageComponent, {
         data: {
           type: 'E',
@@ -61,7 +74,7 @@ export class ProfileComponent implements OnInit {
           message: 'Something Went Wrong. Please Try Again.',
         }
       });
-})
+    }})
   }
   }
 
@@ -92,6 +105,19 @@ export class ProfileComponent implements OnInit {
 
       },
         (error: any) => {
+          this._utiltyservice.loader = false
+          if (error.status = 401){
+            this._dataservice.clearUserSession()
+            this.router.navigateByUrl('/main/home-page')
+            this.dialog.open(MessageComponent, {
+              data: {
+                type: 'E',
+                title: 'System Error',
+                message: 'Session Expired. Please Login Again.',
+              }
+            });
+          }
+          else{
           this.dialog.open(MessageComponent, {
             data: {
               type: 'E',
@@ -99,7 +125,7 @@ export class ProfileComponent implements OnInit {
               message: 'Something Went Wrong. Please Try Again.',
             }
           });
-        })
+        }        })
   }
 
   deleteAccount(){
@@ -122,6 +148,19 @@ export class ProfileComponent implements OnInit {
         this._dataservice.clearUserSession()
       },
         (error: any) => {
+          this._utiltyservice.loader = false
+          if (error.status = 401){
+            this._dataservice.clearUserSession()
+            this.router.navigateByUrl('/main/home-page')
+            this.dialog.open(MessageComponent, {
+              data: {
+                type: 'E',
+                title: 'System Error',
+                message: 'Session Expired. Please Login Again.',
+              }
+            });
+          }
+          else{
           this.dialog.open(MessageComponent, {
             data: {
               type: 'E',
@@ -129,6 +168,6 @@ export class ProfileComponent implements OnInit {
               message: 'Something Went Wrong. Please Try Again.',
             }
           });
-                })
+        }                })
   }
 }

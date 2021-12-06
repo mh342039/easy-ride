@@ -59,6 +59,19 @@ export class RideSearchComponent implements OnInit {
       this.searchRide.emit();
     },
     (error: any)=>{
+      this._utilityservice.loader = false
+      if (error.status = 401){
+        this._dataservice.clearUserSession()
+        this.router.navigateByUrl('/main/home-page')
+        this.dialog.open(MessageComponent, {
+          data: {
+            type: 'E',
+            title: 'System Error',
+            message: 'Session Expired. Please Login Again.',
+          }
+        });
+      }
+      else{
       this.dialog.open(MessageComponent, {
         data: {
           type: 'E',
@@ -66,7 +79,7 @@ export class RideSearchComponent implements OnInit {
           message: 'Something Went Wrong. Please Try Again.',
         }
       });
-})
+    }})
   }
   else{
     this._utilityservice.logIn()
