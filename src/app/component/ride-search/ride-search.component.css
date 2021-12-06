@@ -4,6 +4,18 @@ mat-form-field{
 }
 
 .search-ride-container{
-    margin: auto;
-    width: 80vw;
+  margin: auto;
+  width: 80vw;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  margin-bottom: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 8px 0 rgba(100, 100, 100, 0.25);
+  cursor: pointer;
+  transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+  overflow: auto;
+  zoom: 120%;
 }
+

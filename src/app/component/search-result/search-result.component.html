@@ -1,9 +1,9 @@
 <h1>Search Results</h1>
 
+<div class="search-container">
+    <app-ride-search (searchRide)="searchRide()"></app-ride-search>
+</div>
 <div class="main-container">
-    <div class="search-container">
-        <app-ride-search (searchRide)="searchRide()"></app-ride-search>
-    </div>
     <div class="result-container">
         <div class="body">
             <p style="padding-left: 40px;"> From {{_dataservice?.searchCriteria?.LeaveFrom}} </p>
@@ -24,7 +24,7 @@
                             <span style="float: right"> $&nbsp;{{ride?.price}} </span>
                         </div>
                         <div class="action">
-                            <a> Book </a>
+                            <a (click)="book()"> Book </a>
                         </div>
 
                     </div>

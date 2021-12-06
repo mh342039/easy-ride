@@ -80,6 +80,19 @@ export class PublishRideComponent implements OnInit {
         this._utiltyservice.loader = false
       },
         (error: any) => {
+          this._utiltyservice.loader = false
+          if (error.status = 401){
+            this._dataservice.clearUserSession()
+            this.router.navigateByUrl('/main/home-page')
+            this.dialog.open(MessageComponent, {
+              data: {
+                type: 'E',
+                title: 'System Error',
+                message: 'Session Expired. Please Login Again.',
+              }
+            });
+          }
+          else{
           this.dialog.open(MessageComponent, {
             data: {
               type: 'E',
@@ -87,7 +100,7 @@ export class PublishRideComponent implements OnInit {
               message: 'Something Went Wrong. Please Try Again.',
             }
           });
-        })
+        }        })
   }
 
 }

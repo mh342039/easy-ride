@@ -1,15 +1,25 @@
 <div class="update-ride-container"> 
     <h1 mat-dialog-title> UPDATE RIDE </h1>
 <div mat-dialog-content>
-    <form [formGroup]="UpdateRideFormGroup">
+    <form [formGroup]="UpdateRideFormGroup" (submit)="updateRide()">
+        <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input matInput formControlName="Title" placeholder="Title" type="text">
+        </mat-form-field>  <br/>
+
         <mat-form-field style="margin-right: 15px;">
-            <mat-label>From</mat-label>
-            <input matInput formControlName="From" placeholder="From" type="text">
+            <mat-label>Leaving From</mat-label>
+            <input matInput formControlName="From" placeholder="Leaving From" type="text">
         </mat-form-field>  <br/>
 
         <mat-form-field>
-            <mat-label>To</mat-label>
-            <input matInput formControlName="To" placeholder="To" type="text">
+            <mat-label>Destination</mat-label>
+            <input matInput formControlName="To" placeholder="Destination" type="text">
+        </mat-form-field>  <br/>
+
+        <mat-form-field>
+            <mat-label>Time</mat-label>
+            <input matInput formControlName="Departure" placeholder="Departure Time" type="datetime-local">
         </mat-form-field>  <br/>
 
         <mat-form-field>
@@ -17,20 +27,11 @@
             <input matInput formControlName="Price" placeholder="Price" type="text">
         </mat-form-field>  <br/>
 
-        <mat-form-field>
-            <mat-label>Departure Time</mat-label>
-            <input matInput formControlName="Departure" placeholder="Departure Time" type="text">
-        </mat-form-field>  <br/>
-
-        <mat-form-field>
-            <mat-label>Arrival Time</mat-label>
-            <input matInput formControlName="Arrival" placeholder="Arrival Time" type="text">
-        </mat-form-field>  <br/>
 
         <br>
 
         <button mat-raised-button color="primary" type="submit">Update Ride</button> &nbsp;
-        <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+        <button mat-raised-button color="warn" (click)="delete()">Delete</button>
 
     </form>
 </div>

@@ -1,6 +1,7 @@
+
 <div class="search-ride-container">
 
-<form [formGroup]="SearchFormGroup" (submit)="search()">
+  <form [formGroup]="SearchFormGroup" (submit)="search()">
     <mat-form-field >
         <mat-label>Leave From*</mat-label>
         <input matInput formControlName="LeaveFrom" placeholder="Leave From" type="text" [(ngModel)]="_dataservice.searchCriteria.LeaveFrom">
