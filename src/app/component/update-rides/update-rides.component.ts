@@ -16,7 +16,13 @@ import { MessageComponent } from '../message/message.component';
 export class UpdateRidesComponent implements OnInit {
   public UpdateRideFormGroup: any;
   rideDetail: any
-
+  alaisDict: any = {
+    From:"origin",
+      To: "destination",
+      Price: "price",
+      Departure: "time",
+      Title: "ride_title",
+  }
   constructor(public dialog: MatDialog, private router: Router, private fb: FormBuilder, public _dataservice: DataService, private _httpService: HttpService, private _utilityservice: UtilityService,  @Inject(MAT_DIALOG_DATA) public data: any) { 
     this.UpdateRideFormGroup = new FormGroup({
       From: new FormControl(''),
@@ -31,7 +37,7 @@ export class UpdateRidesComponent implements OnInit {
     this._utilityservice.loader = true
 
     let query = 'access_token=' + this._dataservice.getAccessToken()
-    query = query + '&query=' + this.data.id
+    query = query + '&ride_id=' + this.data.id
 
     if (this._dataservice.getAccessToken()) {
       this._httpService.getServiceCallWithQueryParameter('/rides', query)
@@ -78,6 +84,55 @@ export class UpdateRidesComponent implements OnInit {
         })
     }
 
+  }
+
+  updateRide() {
+    if (this.UpdateRideFormGroup.status == "INVALID") {
+      return;
+    }
+    this._utilityservice.loader = true
+    let query = 'access_token=' + this._dataservice.getAccessToken() + '&ride_id=' + this.data.id
+    for (let f in this.UpdateRideFormGroup.value) {
+      if (this.UpdateRideFormGroup.value[f]) {
+        query = query + '&' + this.alaisDict[f] + '=' + this.UpdateRideFormGroup.value[f]
+      }
+    }
+
+    this._httpService.patchServiceCallwithQueryParameters("/rides", query)
+      .subscribe((result: any) => {
+        this._utilityservice.loader = false
+        const dialogRef = this.dialog.open(MessageComponent, {
+          data: {
+            type: 'C',
+            title: 'Success!',
+            message: 'Ride Updated Successfully!. Thanks for the Update!',
+            duration: 3000
+          }
+        });
+
+      },
+        (error: any) => {
+          this._utilityservice.loader = false
+          if (error.status = 401){
+            this._dataservice.clearUserSession()
+            this.router.navigateByUrl('/main/home-page')
+            this.dialog.open(MessageComponent, {
+              data: {
+                type: 'E',
+                title: 'System Error',
+                message: 'Session Expired. Please Login Again.',
+              }
+            });
+          }
+          else{
+          this.dialog.open(MessageComponent, {
+            data: {
+              type: 'E',
+              title: 'System Error',
+              message: 'Something Went Wrong. Please Try Again.',
+            }
+          });
+        }        })
   }
 
   delete(){

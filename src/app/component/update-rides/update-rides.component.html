@@ -1,7 +1,7 @@
 <div class="update-ride-container"> 
     <h1 mat-dialog-title> UPDATE RIDE </h1>
 <div mat-dialog-content>
-    <form [formGroup]="UpdateRideFormGroup">
+    <form [formGroup]="UpdateRideFormGroup" (submit)="updateRide()">
         <mat-form-field>
             <mat-label>Title</mat-label>
             <input matInput formControlName="Title" placeholder="Title" type="text">
@@ -19,7 +19,7 @@
 
         <mat-form-field>
             <mat-label>Time</mat-label>
-            <input matInput formControlName="Departure" placeholder="Departure Time" type="text">
+            <input matInput formControlName="Departure" placeholder="Departure Time" type="datetime-local">
         </mat-form-field>  <br/>
 
         <mat-form-field>
