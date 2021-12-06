@@ -24,7 +24,7 @@ export class UtilityService {
     this.loader = true
 
     let query = 'access_token=' + this._dataservice.getAccessToken()
-    query = query + '&query=mumford'
+    query = query + '&query=Clayton'
 
     if (this._dataservice.getAccessToken()) {
       this._httpService.getServiceCallWithQueryParameter('/rides', query)
