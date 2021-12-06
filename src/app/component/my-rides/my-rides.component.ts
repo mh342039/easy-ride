@@ -37,7 +37,7 @@ export class MyRidesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-
+      this._utilityservice.getMyRides()
     });
   }
   delete(rideId: any) {

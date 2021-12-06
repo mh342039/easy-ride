@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { HttpService } from 'src/app/services/http.service';
@@ -23,7 +23,7 @@ export class UpdateRidesComponent implements OnInit {
       Departure: "time",
       Title: "ride_title",
   }
-  constructor(public dialog: MatDialog, private router: Router, private fb: FormBuilder, public _dataservice: DataService, private _httpService: HttpService, private _utilityservice: UtilityService,  @Inject(MAT_DIALOG_DATA) public data: any) { 
+  constructor(private UpdateRideDialogRef: MatDialogRef<UpdateRidesComponent>,public dialog: MatDialog, private router: Router, private fb: FormBuilder, public _dataservice: DataService, private _httpService: HttpService, private _utilityservice: UtilityService,  @Inject(MAT_DIALOG_DATA) public data: any) { 
     this.UpdateRideFormGroup = new FormGroup({
       From: new FormControl(''),
       To: new FormControl(''),
@@ -109,6 +109,9 @@ export class UpdateRidesComponent implements OnInit {
             duration: 3000
           }
         });
+        dialogRef.afterClosed().subscribe(result => {
+          this.UpdateRideDialogRef.close()
+        })
 
       },
         (error: any) => {
