@@ -11,10 +11,11 @@
             <div class="ride-container">
                 <div class="ride" *ngFor="let ride of _dataservice.searchResult">
                     <div class="content">
-                        <div class="time">
-                            <span> {{ride?.time}} </span>
-
-                        </div>
+                            <div class="time">
+                                <span> {{ride?.time|date : 'fullDate'}} </span>
+                            <br/>
+                                <span>{{ride?.time|date :'HH:mm'}}</span>
+                            </div>
                         <div class="location">
                             <span> {{ride?.origin}} </span>
                             <span> {{ride?.destination}} </span>
