@@ -81,7 +81,7 @@ export class PublishRideComponent implements OnInit {
       },
         (error: any) => {
           this._utiltyservice.loader = false
-          if (error.status = 401){
+          if (error.status = 401) {
             this._dataservice.clearUserSession()
             this.router.navigateByUrl('/main/home-page')
             this.dialog.open(MessageComponent, {
@@ -92,15 +92,20 @@ export class PublishRideComponent implements OnInit {
               }
             });
           }
-          else{
-          this.dialog.open(MessageComponent, {
-            data: {
-              type: 'E',
-              title: 'System Error',
-              message: 'Something Went Wrong. Please Try Again.',
-            }
-          });
-        }        })
+          else {
+            this.dialog.open(MessageComponent, {
+              data: {
+                type: 'E',
+                title: 'System Error',
+                message: 'Something Went Wrong. Please Try Again.',
+              }
+            });
+          }
+        })
+  }
+
+  reset() {
+    this.RideFormGroup.reset()
   }
 
 }

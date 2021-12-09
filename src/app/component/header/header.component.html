@@ -5,7 +5,11 @@
             <img width=50%; height=70vh; src="assets/images/logo.jpeg" class="logo" routerLink="/main/home-page" />
         </div>
         <div class="col-md-9 right-align">
-            <a class="link" routerLink="/main/publish-ride">
+            <a class="link" routerLink="/main/search-result" *ngIf="_dataService?.userSession?.access_token">
+                <span class="glyphicon glyphicon-search no-border-icon"></span>
+                <span>Search a ride</span>
+            </a>
+            <a class="link" routerLink="/main/publish-ride" *ngIf="_dataService?.userSession?.access_token">
                 <span class="glyphicon glyphicon-plus publish-icon"></span>
                 <span>Publish a ride</span>
             </a>

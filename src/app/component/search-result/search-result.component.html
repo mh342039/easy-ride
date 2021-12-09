@@ -5,7 +5,7 @@
 </div>
 <div class="main-container">
     <div class="result-container">
-        <div class="body">
+        <div class="body" *ngIf="_dataservice?.searchResult">
             <p style="padding-left: 40px;"> From {{_dataservice?.searchCriteria?.LeaveFrom}} </p>
             <p style="padding-left: 40px;"> <strong> {{_dataservice?.searchResult?.length}} </strong> ride available </p>
             <div class="ride-container">
