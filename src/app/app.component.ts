@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms'
 import { UtilityService } from './services/utility.service';
 @Component({
   selector: 'app-root',
@@ -7,18 +6,11 @@ import { UtilityService } from './services/utility.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'easy-ride';
-  searchRide = new FormGroup({
-    from: new FormControl(''),
-    to: new FormControl(''),
-    passenger: new FormControl(''),
-  })
+  title = 'Easy Ride';
 
   constructor(public _utilityservice: UtilityService){}
 
-  search(){
-    console.warn(this.searchRide.value)
-  }
+
 
 
 }

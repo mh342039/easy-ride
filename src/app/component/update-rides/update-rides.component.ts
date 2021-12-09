@@ -42,7 +42,6 @@ export class UpdateRidesComponent implements OnInit {
     if (this._dataservice.getAccessToken()) {
       this._httpService.getServiceCallWithQueryParameter('/rides', query)
         .subscribe((result: any) => {
-          console.log(result)
           this._utilityservice.loader = false
           this.rideDetail = result
 
